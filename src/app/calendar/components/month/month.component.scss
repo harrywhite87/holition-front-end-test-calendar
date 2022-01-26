@@ -1,0 +1,86 @@
+.month-container {
+  display: inline-block;
+  width: 100%;
+}
+.days-cointainer {
+  grid-template-columns: repeat(7, 1fr);
+  display: grid;
+}
+// h5 {
+//   position: relative;
+//   &:before {
+//     content: "";
+//     display: inline-block;
+//     position: absolute;
+//     bottom: -0.8rem;
+//     left: 0;
+//     width: 100%;
+//     border-bottom: 1px solid black;
+//   }
+// }
+h3 {
+  color: #ef423d;
+  font-weight: 400;
+}
+.day:not(.in-month) {
+  pointer-events: none;
+  opacity: 0;
+}
+.day {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  height: 28px;
+  line-height: 28px;
+  cursor: pointer;
+  font-size: 14px;
+  &.today,
+  &:hover {
+    span {
+      color: #fff;
+      position: relative;
+    }
+    &:before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: #ef433d;
+      border-radius: 50%;
+      z-index: 0;
+    }
+  }
+}
+.weekday {
+  text-align: center;
+  margin-bottom: 8px;
+}
+h3 {
+  margin: 0.2rem 0 0.6rem 0;
+}
+@media only screen and (max-width: 1150px) {
+  .day {
+    height: 24px;
+    line-height: 24px;
+    &.today,
+    &:hover {
+      span {
+        color: #fff;
+        position: relative;
+      }
+      &:before {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 800px) {
+  span {
+    font-size: 13px;
+  }
+}

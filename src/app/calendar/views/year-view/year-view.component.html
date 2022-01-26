@@ -1,0 +1,8 @@
+<div class="year-view-container">
+  <year [year]="params.year" [month]="params.month" [day]="params.day"
+    [ngStyle]="{'grid-row':1,'grid-column':1,'z-index':modify.zIndex1,'transform':'translateY('+modify.transformY+'%)'}">
+  </year>
+  <year [year]="tempDate" [month]="params.month" [day]="params.day"
+    [ngStyle]="{'grid-row':1,'grid-column':1,'z-index':modify.zIndex2}">
+  </year>
+</div>

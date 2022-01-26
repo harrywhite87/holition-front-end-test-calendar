@@ -1,0 +1,13 @@
+<div class="month-container">
+  <!-- <h5>{{monthName | uppercase }}</h5> -->
+  <h3>{{monthName}}</h3>
+  <div class="days-cointainer">
+    <div class="weekday" *ngFor="let weekday of weekdays; let i = index" [ngStyle]="{'grid-column':i+1,'grid-row':1}">
+      {{weekday}}</div>
+    <div class="day" *ngFor="let date of days"
+      [ngClass]="{'in-month':date.inMonth,'today':activeMonth==month+1 && day == date.day}"
+      [ngStyle]="{'grid-column':date.column,'grid-row':date.row+1}">
+      <span>{{date.day}}</span>
+    </div>
+  </div>
+</div>

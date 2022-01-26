@@ -1,0 +1,57 @@
+<div class="calendar-header">
+
+  <div class="calendar-header-wrapper">
+    <div class="row">
+      <div class="calendar-add-wrapper">
+        <button class=" button icon add"></button>
+      </div>
+      <div class="calendar-timeframe">
+        <div class="calendar-timeframe-mobile">
+          <span>{{params.timeframe | titlecase}}</span>
+          <div class="drop-wrapper">
+            <a class="button" [routerLink]="'/calendar/day/'+params.year+'/'+params.month+'/'+params.day"
+              routerLinkActive="active-timeframe" [ngClass]="{'active-timeframe':params.timeframe=='day'}">Day</a>
+            <a class="button" [routerLink]="'/calendar/week/'+params.year+'/'+params.month+'/'+params.day"
+              routerLinkActive="active-timeframe" [ngClass]="{'active-timeframe':params.timeframe=='week'}">Week</a>
+            <a class="button" [routerLink]="'/calendar/month/'+params.year+'/'+params.month+'/'+params.day"
+              routerLinkActive="active-timeframe" [ngClass]="{'active-timeframe':params.timeframe=='month'}">Month</a>
+            <a class="button" [routerLink]="'/calendar/year/'+params.year+'/'+params.month+'/'+params.day"
+              [ngClass]="{'active-timeframe':params.timeframe=='year'}">Year</a>
+          </div>
+
+        </div>
+        <div class="calendar-timeframe-desktop">
+          <a class="button" [routerLink]="'/calendar/day/'+params.year+'/'+params.month+'/'+params.day"
+            routerLinkActive="active-timeframe" [ngClass]="{'active-timeframe':params.timeframe=='day'}">Day</a>
+          <a class="button" [routerLink]="'/calendar/week/'+params.year+'/'+params.month+'/'+params.day"
+            routerLinkActive="active-timeframe" [ngClass]="{'active-timeframe':params.timeframe=='week'}">Week</a>
+          <a class="button" [routerLink]="'/calendar/month/'+params.year+'/'+params.month+'/'+params.day"
+            routerLinkActive="active-timeframe" [ngClass]="{'active-timeframe':params.timeframe=='month'}">Month</a>
+          <a class="button" [routerLink]="'/calendar/year/'+params.year+'/'+params.month+'/'+params.day"
+            [ngClass]="{'active-timeframe':params.timeframe=='year'}">Year</a>
+        </div>
+      </div>
+
+      <div class="calendar-search-wrapper">
+        <div class="search-input-wrapper"> <input placeholder="Search"></div>
+
+      </div>
+    </div>
+
+
+    <div class="calendar-nav">
+      <button class=" button icon left-chevron" (click)="changeDate(-1)"></button>
+      <button class="button" (click)="changeDate(0)">Today</button>
+      <button class=" button icon right-chevron" (click)="changeDate(1)"></button>
+    </div>
+  </div>
+</div>
+<div class="calendar-main">
+  <ng-container *ngIf="loaded">
+    <day-view *ngIf="params.timeframe === 'day'" [params]="params"></day-view>
+    <week-view *ngIf="params.timeframe === 'week'" [params]="params"></week-view>
+    <month-view *ngIf="params.timeframe === 'month'" [params]="params"></month-view>
+    <year-view *ngIf="params.timeframe === 'year'" [params]="params" [dateChange]="dateChange"></year-view>
+  </ng-container>
+
+</div>

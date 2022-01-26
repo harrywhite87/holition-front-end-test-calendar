@@ -1,0 +1,7 @@
+<div class="year-container">
+  <h2>{{year}}</h2>
+  <div class="months-container">
+    <month [year]="year" [activeMonth]="month" [month]="i" [day]="day"
+      *ngFor="let item of [].constructor(12); let i = index"></month>
+  </div>
+</div>
